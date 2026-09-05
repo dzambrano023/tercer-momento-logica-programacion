@@ -18,12 +18,7 @@ public class InventarioNoel {
             opcion = sc.nextInt();
             switch (opcion) {
                 case 1:
-                    for (String producto : productos) {
-                        System.out.println("PRODUCTOS REGISTRADOS: " + producto);
-                        if (producto == null) {
-                            System.out.println("         "); // revisar esta linea ??? (Cuando sea null imprima un esacio en blanco)
-                        }
-                    }
+                   listarProductos(productos);
                     break;
                 case 2:
                     System.out.println("INGRESE EL NOMBRE DEL PRODUCTO: ");
@@ -44,7 +39,7 @@ public class InventarioNoel {
                     continuar = false;
                     break;
 
-                    
+
 
             }
 
@@ -52,6 +47,15 @@ public class InventarioNoel {
         }
 
     }
+
+    public static void listarProductos(String[] productos) {
+        System.out.println("Lista de Productos: ");
+        for (String producto : productos) {
+            System.out.println(producto);
+        }
+    }
+
+
 
     public static boolean buscarProducto(String[] nombreArray, String nombreProducto) {
 
