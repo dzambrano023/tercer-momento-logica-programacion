@@ -56,6 +56,7 @@ public class InventarioNoel {
     }
 
 
+// Función que se debe modificar para que al buscar el producto también imprima el mensaje de que ha sido encontrado 
 
     public static boolean buscarProducto(String[] nombreArray, String nombreProducto) {
 
