@@ -52,24 +52,28 @@ public class InventarioNoel {
 
     public static void buscarProducto(String[] nombreArray, String nombreProducto) {
  
-        
+        boolean encontrado = false;
         for (int i = 0; i < nombreArray.length; i++) {
 
             try {
                 if (nombreArray[i].equals(nombreProducto)) {
-                    System.out.println("El producto ha sido encontrado");
+                    System.out.println("El producto " + nombreProducto + " ha sido encontrado!!");
+                    encontrado = true;
                     
                 }
 
-            } catch (NullPointerException e) {
-                System.out.println("aqui saldria un Nullpointer excepción pero lo capturé");
+            } catch (NullPointerException e) {  
                 
                 continue;
                 
             }
         
         }
-        System.out.println("El producto no fue encontrado");
+        if(encontrado == false){
+            System.out.println("El producto " + nombreProducto + " no fue encontrado");
+
+        }
+        
         
     }
 
