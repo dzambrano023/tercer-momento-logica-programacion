@@ -28,7 +28,15 @@ public class InventarioNoel {
 
                 case 3:
                     System.out.println("Ingrese el producto a Agregar");
-                    agregarProducto(productos, sc.next());
+                    String productoParaAgregar = sc.next();
+                    boolean existia = buscarProducto(productos, productoParaAgregar);
+                    if (existia) {
+                        System.out.println("El producto "+ productoParaAgregar+" ya existe, no se puede agregar");                        
+                    }else{
+                        agregarProducto(productos, productoParaAgregar);
+                        
+                    }
+                    
                     break;
 
                 case 4:
@@ -50,31 +58,25 @@ public class InventarioNoel {
     }
 
 
-    public static void buscarProducto(String[] nombreArray, String nombreProducto) {
+    public static boolean buscarProducto(String[] nombreArray, String nombreProducto) {
  
-        boolean encontrado = false;
+        
         for (int i = 0; i < nombreArray.length; i++) {
 
             try {
                 if (nombreArray[i].equals(nombreProducto)) {
                     System.out.println("El producto " + nombreProducto + " ha sido encontrado!!");
-                    encontrado = true;
-                    
+                    return true;
                 }
 
-            } catch (NullPointerException e) {  
-                
+            } catch (NullPointerException e) {
                 continue;
-                
             }
         
         }
-        if(encontrado == false){
-            System.out.println("El producto " + nombreProducto + " no fue encontrado");
-
-        }
-        
-        
+        System.out.println("El producto " + nombreProducto + " no fue encontrado");
+        return false;
+     
     }
 
     public static void agregarProducto(String[] nombreArray, String nombreProducto) {
@@ -82,7 +84,7 @@ public class InventarioNoel {
             if (nombreArray[i] == null) {
                 nombreArray[i] = nombreProducto;
                 i = nombreArray.length;
-                System.out.println("PRODUCTO: " + nombreProducto);
+                System.out.println("PRODUCTO: " + nombreProducto+ "AGREGADO");
             }
         }
 
