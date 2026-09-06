@@ -24,9 +24,6 @@ public class InventarioNoel {
                     System.out.println("INGRESE EL NOMBRE DEL PRODUCTO: ");
                     String nombreProducto = sc.next();
                     buscarProducto(productos, nombreProducto);
-                    if (buscarProducto(productos, nombreProducto)) {
-                        System.out.println("Producto: " + nombreProducto + " Disponible");
-                    }
                     break;
 
                 case 3:
@@ -39,10 +36,7 @@ public class InventarioNoel {
                     continuar = false;
                     break;
 
-
-
             }
-
 
         }
 
@@ -56,17 +50,27 @@ public class InventarioNoel {
     }
 
 
-// Función que se debe modificar para que al buscar el producto también imprima el mensaje de que ha sido encontrado 
-
-    public static boolean buscarProducto(String[] nombreArray, String nombreProducto) {
-
+    public static void buscarProducto(String[] nombreArray, String nombreProducto) {
+ 
+        
         for (int i = 0; i < nombreArray.length; i++) {
 
-            if (nombreArray[i].equals(nombreProducto)) {
-                return true;
+            try {
+                if (nombreArray[i].equals(nombreProducto)) {
+                    System.out.println("El producto ha sido encontrado");
+                    
+                }
+
+            } catch (NullPointerException e) {
+                System.out.println("aqui saldria un Nullpointer excepción pero lo capturé");
+                
+                continue;
+                
             }
+        
         }
-        return false;
+        System.out.println("El producto no fue encontrado");
+        
     }
 
     public static void agregarProducto(String[] nombreArray, String nombreProducto) {
